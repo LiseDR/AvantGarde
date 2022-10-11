@@ -9,6 +9,6 @@ import fr.solutec.entities.*;
 public interface MemoRepository extends CrudRepository<Memo, Long> {
 	public Optional<Memo> findByIdMemo(Long idMemo);
 	
-	public List<Memo> findByUserId (Long id);
+	public List<Memo> findByExpediteurId (Long id);
 	
 }

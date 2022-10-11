@@ -49,8 +49,8 @@ public class MemoRest {
 	}
 	
 	@GetMapping("memo/user/{id}")
-	public List<Memo> getMemoUser(@PathVariable Long idUser) {
-		return memoRepos.findByUserId(idUser);
-	}
+	public List<Memo> getMemoUser(@PathVariable Long id) {
+		return memoRepos.findByExpediteurId(id);
 	
+	}
 }
