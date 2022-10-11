@@ -11,4 +11,6 @@ public interface UserRepository extends CrudRepository<User, Long>  {
 
 	public Optional<User> findByLoginAndMdp(String login, String mdp);
 	//@Query(value = "SELECT u FROM User u WHERE u.login =?1 AND u.mdp=?2")
+	
+	
 }
