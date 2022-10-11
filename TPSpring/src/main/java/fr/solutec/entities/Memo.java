@@ -27,5 +27,7 @@ public class Memo {
 	private Date dateCreation;
 	
 	@ManyToOne
-	private User user;
+	private User expediteur;
+	@ManyToOne
+	private User destinataire;
 }
