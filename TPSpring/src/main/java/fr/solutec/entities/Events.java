@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -14,19 +16,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@NoArgsConstructor @AllArgsConstructor @Data
 @Entity
 
 public class Events {
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private Long id;
 	private String titre;
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	private String lieu;
-	@CreationTimestamp
-	private Date dateCreation;
+	@CreationTimestamp 
+	private Date dateCreation; 
+	
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
 }
