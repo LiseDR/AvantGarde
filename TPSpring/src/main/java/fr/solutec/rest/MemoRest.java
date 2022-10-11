@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,9 @@ public class MemoRest {
 		}
 	}
 	
+	@GetMapping("memo/user/{id}")
+	public List<Memo> getMemoUser(@PathVariable Long id) {
+		return memoRepos.findByExpediteurId(id);
 	
-	
+	}
 }
