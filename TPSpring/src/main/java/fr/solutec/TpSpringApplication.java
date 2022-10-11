@@ -9,12 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.*;
 import fr.solutec.repository.MemoRepository;
+import fr.solutec.repository.UserRepository;
 
 @SpringBootApplication
 public class TpSpringApplication implements CommandLineRunner  {
 
 	@Autowired
 	private MemoRepository memoRepos;
+	@Autowired
+	private UserRepository userRepos;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TpSpringApplication.class, args);
@@ -24,12 +28,22 @@ public class TpSpringApplication implements CommandLineRunner  {
 	public void run(String... args) throws Exception {
 		System.out.println("Lancement en cours !");
 		
-		Memo m1 = new Memo(null,"Faudra que je penses à sortir le chien !", null);
-		Memo m2 = new Memo(null,"Faudra que je penses à voir Joël !", null);
+		User u1 = new User(null,"Joel", "Jojo", "Test", "Test");
+		User u2 = new User(null,"Ahadi", "Aha", "Triste", "Test");
+		User u3 = new User(null,"Caro", "Caro", "Dac", "Test");
+		User u4 = new User(null,"Lise", "Luse", "Oui", "Test");
+		User u5 = new User(null,"Porc", "Cochon", "Miam", "Test");
+		
+		Stream.of(u1,u2, u3, u4, u5).forEach(u -> {
+			userRepos.save(u);
+		});
+		
+		Memo m1 = new Memo(null,"Faudra que je penses à sortir le chien !",true, null, u1, u5);
+		Memo m2 = new Memo(null,"Faudra que je penses à voir Joël !",true, null, u4,u3);
 		
 		Stream.of(m1,m2).forEach(m -> {
 			memoRepos.save(m);
 		});
-		
+
 	}
 }
