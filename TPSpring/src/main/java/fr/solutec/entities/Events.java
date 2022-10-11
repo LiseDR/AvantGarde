@@ -5,6 +5,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +21,9 @@ public class Events {
 	@Id @GeneratedValue
 	private Long id;
 	private String titre;
-	private Date dateEvent;
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 	private String lieu;
-
+	@CreationTimestamp 
+	private Date dateCreation; 
 }
