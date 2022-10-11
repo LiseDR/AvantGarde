@@ -14,8 +14,9 @@ public class AmiRest {
 	@Autowired
 	private AmiRepository amiRepos;
 
-	@GetMapping("ami")
+	@GetMapping("mesamis")
 	public Iterable<Ami> getAllAmi() {
 		return amiRepos.findAll();
 	}
+
 }
