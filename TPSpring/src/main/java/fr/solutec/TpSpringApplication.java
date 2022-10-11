@@ -24,8 +24,8 @@ public class TpSpringApplication implements CommandLineRunner  {
 	public void run(String... args) throws Exception {
 		System.out.println("Lancement en cours !");
 		
-		Memo m1 = new Memo(null,"Faudra que je penses à sortir le chien !",true, null);
-		Memo m2 = new Memo(null,"Faudra que je penses à voir Joël !",true, null);
+		Memo m1 = new Memo(null,"Faudra que je penses à sortir le chien !",true, null, null);
+		Memo m2 = new Memo(null,"Faudra que je penses à voir Joël !",true, null, null);
 		
 		Stream.of(m1,m2).forEach(m -> {
 			memoRepos.save(m);
