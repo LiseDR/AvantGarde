@@ -16,24 +16,23 @@ import fr.solutec.repository.EventsRepository;
 @RestController
 @CrossOrigin("*") // n'importe qui peut consommer des api de cette classe
 public class EventsRest {
-@Autowired
-private EventsRepository eventsRepos;
+	@Autowired
+	private EventsRepository eventsRepos;
 
+	@PostMapping("event")
+	public Events createEvent(@RequestBody Events ev) {
+		return eventsRepos.save(ev);
+	}
 
-@PostMapping("event")
-public Events createEvent(@RequestBody Events ev) {
-	return eventsRepos.save(ev);
-}
+	@GetMapping("event/after")
+	public Optional<Events> upcomingEvents() {
+		Date d = new Date();
+		return eventsRepos.findByStartDateAfter(d);
+	}
 
-@GetMapping("event/after")
-public Optional<Events> upcomingEvents() {
-	Date d = new Date();
-	return eventsRepos.findByStartDateAfter(d);
-}
-
-@GetMapping("event/before")
-public Optional<Events> pastEvents() {
-	Date d = new Date();
-	return eventsRepos.findByStartDateBefore(d);
-}
+	@GetMapping("event/before")
+	public Optional<Events> pastEvents() {
+		Date d = new Date();
+		return eventsRepos.findByStartDateBefore(d);
+	}
 }
