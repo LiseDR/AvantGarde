@@ -35,4 +35,5 @@ public class EventsRest {
 		Date d = new Date();
 		return eventsRepos.findByStartDateBefore(d);
 	}
+
 }
