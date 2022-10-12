@@ -3,6 +3,7 @@ package fr.solutec.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Ami;
@@ -14,9 +15,9 @@ public class AmiRest {
 	@Autowired
 	private AmiRepository amiRepos;
 
-	@GetMapping("mesamis")
-	public Iterable<Ami> getAllAmi() {
-		return amiRepos.findAll();
+	@GetMapping("mesamis/{id}")
+	public Iterable<Ami> mesAmis(@PathVariable Long id) {
+		return amiRepos.findAllByDemandeurOrReceveur(id, id);
 	}
 
 }

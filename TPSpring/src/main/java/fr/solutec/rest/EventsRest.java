@@ -36,4 +36,9 @@ public class EventsRest {
 		return eventsRepos.findByStartDateBefore(d);
 	}
 
+	@GetMapping("events")
+	public Iterable<Events> allEvents() {
+		return eventsRepos.findAll();
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.*;
+import fr.solutec.repository.EventsRepository;
 import fr.solutec.repository.MemoRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -18,6 +19,8 @@ public class TpSpringApplication implements CommandLineRunner  {
 	private MemoRepository memoRepos;
 	@Autowired
 	private UserRepository userRepos;
+	@Autowired
+	private EventsRepository eventRepos;
 	
 	
 	public static void main(String[] args) {
@@ -43,6 +46,14 @@ public class TpSpringApplication implements CommandLineRunner  {
 		
 		Stream.of(m1,m2).forEach(m -> {
 			memoRepos.save(m);
+		});
+		
+		Events e1 = new Events(null, "Fiesta", null, "ESIC", null, u1);
+		Events e2 = new Events(null, "Merguez party", null, "ESIC", null, u2);
+		Events e3 = new Events(null, "Poulet végé party", null, "ESIC", null, u1);
+		
+		Stream.of(e1, e2).forEach(e -> {
+			eventRepos.save(e);
 		});
 
 	}
