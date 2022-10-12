@@ -45,8 +45,13 @@ public class TpSpringApplication implements CommandLineRunner  {
 		Memo m2 = new Memo(null,"Faudra que je pense à voir Joël !",true, null, u4,u3);
 		Memo m3 = new Memo(null,"Pensez à la fête d'Halloween !",false, null, u1, null);
 		Memo m4 = new Memo(null,"Barbecue prévu à la fin de la formation !",false, null, u3,null);
+		Memo m5 = new Memo(null,"Je ne sais pas pourquoi !",true, null, u4,u1);
+		Memo m6 = new Memo(null,"J'adore Solutec Paris !",true, null, u4,u3);
+		Memo m7 = new Memo(null,"Faudra que je pense à tout casser !",true, null, u4,u5);
+		Memo m8 = new Memo(null,"Helo, t'as oublié de faire ta manucure !",true, null, u4,u2);
+		Memo m9 = new Memo(null,"J'aime les patates !",true, null, u4,null);
 		
-		Stream.of(m1,m2,m3,m4).forEach(m -> {
+		Stream.of(m1,m2,m3,m4,m5,m6,m7,m8,m9).forEach(m -> {
 			memoRepos.save(m);
 		});
 		
